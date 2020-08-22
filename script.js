@@ -4,7 +4,6 @@ var number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ];
 var symbols = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", "/", ";", "@", "?", "]", "|", "`"];
 var char = []
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -19,6 +18,8 @@ function writePassword() {
 
 }
 
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
@@ -26,12 +27,13 @@ function generatePassword() {
     var passLength = parseInt(prompt("Please choose a length of your password that is at least 8 character long and no more than 128."));
     if (passLength < 8) {
         alert("Please choose a password longer than 8 Characters");
-        return;
+        passLength = parseInt(prompt("Please choose a length of your password that is at least 8 character long and no more than 128."));
     }
     if (passLength > 128) {
         alert("Please choose a password less than 128 Characters");
-        return;
+        passLength = parseInt(prompt("Please choose a length of your password that is at least 8 character long and no more than 128."));
     }
+
     var passUpper = confirm("Would you Like uppercase letters.");
     var passLower = confirm("Would you Like lowercase letters.");
     var passNumber = confirm("Would you Like numbers.");
