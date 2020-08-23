@@ -30,8 +30,9 @@ function resetStart() {
     writePassword();
 }
 
-
+// This is the function that generates the random password through a series of prompts 
 function generatePassword() {
+    // The if statements below are to ensure that they choose a password that is between 8-128 characters and if they don't it brings them back to the beginning and also to make sure that they choose a number for the length 
     var passLength = parseInt(prompt("Please choose a length of your password that is at least 8 character long and no more than 128."));
     if (passLength < 8) {
         alert("Please choose a password longer than 8 Characters");
@@ -46,17 +47,18 @@ function generatePassword() {
         return generatePassword();
     }
 
-
+    // These variables provide the choices of what they would like to have in their password
     var passUpper = confirm("Would you Like uppercase letters.");
     var passLower = confirm("Would you Like lowercase letters.");
     var passNumber = confirm("Would you Like numbers.");
     var passSymbol = confirm("Would you like special characters.");
     var userChoices = [];
-
+    // The if statement below is to make sure that they make at least one selection of the characters 
     if (!passUpper && !passLower && !passNumber && !passSymbol) {
         alert("Please choose at least one selction for character.")
         return null;
     }
+    //The 4 if statements below is where I concatenated the 4 arrays from the top into the userChoices array 
     if (passUpper) {
         userChoices = userChoices.concat(upperCase);
     }
@@ -72,16 +74,16 @@ function generatePassword() {
     if (passSymbol) {
         userChoices = userChoices.concat(symbols);
     }
-
+    // This for loop is where we loop through the userchoices array and provide the random password
     for (var i = 0; i < passLength; i++) {
         var randomNum = Math.floor(Math.random() * userChoices.length);
         var character = userChoices[randomNum];
         console.log(character);
-
+        // This is where we push the var chracter into the empty array at the top char 
         char.push(character);
 
     }
-
+    // This is how the paassword is displayed onto the screen
     return char.join("");
 
 }
